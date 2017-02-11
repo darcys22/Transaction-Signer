@@ -1,0 +1,17 @@
+{
+  "name": "Transaction Signer for BlockChain Ledger",
+  "version": "0.0.1",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "authors": [
+    "Sean Darcy <Darcys22@gmail.com>"
+  ],
+  "description": "Takes a transaction designed for the blockchain ledger and signs it according to the uploaded private key",
+  "main": "index.html",
+  "keywords": [
+  ],
+  "license": "GPLv3"
+}

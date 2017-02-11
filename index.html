@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		 content="width=device-width, initial-scale=1, user-scalable=yes">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+<div class="container-fluid">
+ 
+	<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-7">
+				<h1>Transaction Signer</h1>
+        <span class='label label-info' id="upload-file-info"></span>
+        <label class="btn btn-default btn-lg" for="my-file-selector">
+              <input id="my-file-selector" type="file" style="display:none;" onchange="uploadKey(event)">
+              Upload Private Key
+        </label>
+        <label class="btn btn-default btn-lg disabled" for="txn-file-selector">
+              <input id="txn-file-selector" type="file" style="display:none;" onchange="uploadTransaction(event)">
+              Upload Transaction
+        </label>
+			</div>
+			<div class="col-md-3"></div>
+	</div>
+  <div class="help-block"></div>
+</div>
+
+<a id="downloadAnchorElem" style="display:none"></a>
+<script type="text/javascript" src="js/main.js"></script> 
+</body>
+</html>
+     
