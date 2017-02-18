@@ -1,30 +1,35 @@
-var crypto = window.crypto || window.msCrypto;
-
-
-if(crypto.subtle){
-  alert("Crypt Supported");
-    promise_key = crypto.subtle.generateKey({name: "RSASSA-PKCS1-v1_5", modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: {name: "SHA-256"}}, false, ["sign", "verify"]);
-
-    promise_key.then(function(key){
-        private_key_object = key.privateKey;
-        public_key_object = key.publicKey;
-    });
-
-    promise_key.catch = function(e){
-
-        console.log(e.message);
-    }
-    
-}
+//DOES NOT WORK!
 
 function uploadKey(event) {
+  var element = document.getElementById("upload");
 	loadBinaryFile(event,function(data){
 
-  crypto.subtle.importKey("pkcs8", data, {name: "RSASSA-PKCS1-v1_5", modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: {name: "SHA-256"}}, true, ["sign"]).then(function(e){
-          console.log(e);
-      }, function(e){
-          console.log(e);
-      }); 
+    window.key = new KJUR.crypto.Signature({"alg": "SHA256withRSA"});
+		window.key.initVerifyByCertificatePEM(data);
+
+    element.classList.remove('disabled');
+
+})}
+
+function uploadFile(event) {
+  var output = document.getElementById("output");
+	loadBinaryFile(event,function(data){
+
+    window.key.updateString(data);
+
+    var signature = window.key.sign();
+    var oHeader = {alg: 'none', typ: 'JWT'};
+    var oPayload = {};
+
+    oPayload.Signature = btoa(signature);
+    oPayload.Date = new Date().toJSON().slice(0,10);
+
+    var sHeader = JSON.stringify(oHeader);
+    var sPayload = JSON.stringify(oPayload);
+    var sJWT = KJUR.jws.JWS.sign("none", sHeader, sPayload);
+
+    output.innerHTML = sJWT;
+
 })}
 
 function loadBinaryFile(path, success) {
@@ -35,5 +40,5 @@ function loadBinaryFile(path, success) {
 			var data = e.target.result;
 			success(data);
 	};
-	reader.readAsArrayBuffer(files[0]);
+	reader.readAsText(files[0]);
 }

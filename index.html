@@ -21,17 +21,23 @@
               <input id="my-file-selector" type="file" style="display:none;" onchange="uploadKey(event)">
               Upload Private Key
         </label>
-        <label class="btn btn-default btn-lg disabled" for="txn-file-selector">
-              <input id="txn-file-selector" type="file" style="display:none;" onchange="uploadTransaction(event)">
+        <label class="btn btn-default btn-lg disabled" for="txn-file-selector" id="upload">
+              <input id="txn-file-selector" type="file" style="display:none;" onchange="uploadFile(event)">
               Upload Transaction
         </label>
 			</div>
 			<div class="col-md-3"></div>
 	</div>
   <div class="help-block"></div>
+	<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-7" id="output"></div>
+			<div class="col-md-3"></div>
+	</div>
 </div>
 
 <a id="downloadAnchorElem" style="display:none"></a>
+<script type="text/javascript" src="bower_components/kjur-jsrsasign/jsrsasign-latest-all-min.js" ></script> 
 <script type="text/javascript" src="js/main.js"></script> 
 </body>
 </html>

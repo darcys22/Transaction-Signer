@@ -1,0 +1,1 @@
+[{"Prot":"Journal","Txn":{"Payee":"Someone","Date":"2015-11-22","Narration":{"Flag":"","Tags":[],"Links":[]},"Postings":[{"Account":"Asset.Cash","Amt":{"Value":"1000","Cur":"AUD"}},{"Account":"Income.Fees","Amt":{"Value":"-1000","Cur":"AUD"}}]}}]
